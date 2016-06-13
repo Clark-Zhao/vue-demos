@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>综合</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<input type="text" v-model="newTodo" v-on:keyup.enter="addTodo" />
+		<ul>
+			<li v-for="todo in todos">
+				<span>{{todo.text}}</span>
+				<button v-on:click="removeTodo($index)">X</button>
+			</li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+		new Vue({
+			el: '#app',
+			data: {
+				newTodo: '',
+				todos: [
+					{text: "add some todos"}
+				]
+			},
+			methods: {
+				addTodo: function(){
+					var newText=this.newTodo.trim();
+					if(newText){
+						this.todos.push({text:newText});
+						this.newTodo="";
+					}
+				},
+				removeTodo: function(index){
+					this.todos.splice(index,1);
+				}
+			}
+		})
+	</script>
+</body>
+</html>

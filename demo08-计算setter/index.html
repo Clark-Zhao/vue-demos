@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>计算setter</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<div id="demo">
+		{{fullName}}
+	</div>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el: '#demo',
+			data: {
+				firstName: 'Foo',
+				lastName: 'Bar'
+			},
+			computed: {
+				fullName: {
+					get: function(){
+						return this.firstName + " " + this.lastName;
+					},
+					set: function(newName){
+						var name = newName.split(" ");
+						this.firstName = name[0];
+						this.lastName = name[name.length - 1];
+					}
+				}
+			}
+		})
+		vm.fullName = "Clark Kent";
+	</script>
+</body>
+</html>

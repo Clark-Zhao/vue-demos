@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>绑定内联样式</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<p>请进入开发者工具查看style的情况：</p>
+	<h2>对象语法</h2>
+	<div id="demo" :style="styleObject">绑定内联样式</div>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el: '#demo',
+			data: {
+				styleObject: {
+					color: 'red',
+					fontSize: '48px',
+					border: '2px solid green',
+					display: 'inline-block'
+				}
+			}
+		})
+	</script>
+	<hr>
+	<h2>数组语法</h2>
+	<div id="demo2" :style="[styleObject,styleObject2]">绑定内联样式</div>
+	<script type="text/javascript">
+		var vm2 = new Vue({
+			el: '#demo2',
+			data: {
+				styleObject: {
+					color: 'red',
+					fontSize: '48px',
+					border: '2px solid green',
+					display: 'inline-block'
+				},
+				styleObject2: {
+					margin: '20px',
+					padding: '20px'
+				},
+			}
+		})
+	</script>	
+</body>
+</html>

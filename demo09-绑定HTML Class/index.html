@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>绑定HTML Class</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<p>请进入开发者工具查看class的情况：</p>
+	<h2>对象语法</h2>
+	<div class="static" :class="{'class-a':isA,'class-b':isB}">演示1</div>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el: '.static',
+			data: {
+				isA: true,
+				isB: false
+			}
+		})
+	</script>
+	<div id="app" :class="classObject">演示2</div>
+	<script type="text/javascript">
+		var vm2 = new Vue({
+			el: '#app',
+			data: {
+				classObject: {
+					'class-a': true,
+					'class-b': false
+				}
+			}
+		})
+	</script>
+	<hr>
+	<h2>数组语法</h2>
+	<div id="demo1" :class="[classA, classB]">演示3</div>
+	<script type="text/javascript">
+		var vm3 = new Vue({
+			el: '#demo1',
+			data: {
+				classA: 'class-a',
+				classB: 'class-b'
+			}
+		})
+	</script>
+	<div id="demo2" :class="[classA,isB?classB:'']">演示4</div>	
+	<script type="text/javascript">
+		var vm4 = new Vue({
+			el: '#demo2',
+			data: {
+				classA: 'class-a',
+				classB: 'class-b',
+				isA: true,
+				isB: false
+			}
+		})
+	</script>
+</body>
+</html>
