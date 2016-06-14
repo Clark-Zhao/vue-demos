@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>内联语句处理</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<div id="example">
+		<button @click="say('hi')">Say Hi</button>
+		<button @click="say('what')">Say What</button>
+	</div>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el: '#example',
+			methods: {
+				say: function(msg){
+					alert(msg);
+				}
+			}
+		})
+	</script>
+</body>
+</html>

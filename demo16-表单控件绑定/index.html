@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单控件绑定</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<div id="example-1">
+		<h2>Text</h2>
+		<span>Message is: {{message}}</span><br />
+		<input type="text" v-model="message" placeholder="edit me"/>
+	</div>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el: '#example-1'
+		})
+	</script>
+	<hr>
+	<div id="example-2">
+		<h2>Checkbox</h2>
+		<input type="checkbox" id="check" v-model="checked" checked="" />
+		<label for="check">{{checked}}</label>
+	</div>
+	<script type="text/javascript">
+		var vm2 = new Vue({
+			el: '#example-2'
+		})
+	</script>
+	<hr>
+	<div id="example-3">
+		<h2>多个Checkbox</h2>
+		<input type="checkbox" id="jack" value="Jack" v-model="checkedNames" />
+		<label for="jack">Jack</label>
+		<input type="checkbox" id="john" value="John" v-model="checkedNames" />
+		<label for="john">John</label>
+		<input type="checkbox" id="mike" value="Mike" v-model="checkedNames" />
+		<label for="mike">Mike</label>
+		<br />
+		Checked names: {{ checkedNames | json }}
+	</div>
+	<script type="text/javascript">
+		var vm2 = new Vue({
+			el: '#example-3',
+			data: {
+				checkedNames: []
+			}
+		})
+	</script>
+	<hr>
+	<div id="example-4">
+		<h2>Radio</h2>
+		<input type="radio" id="one" value="one" v-model="picked" />
+		<label for="one"></label>
+		<input type="radio" id="two" value="two" v-model="picked" />
+		<label for="two"></label>
+		<br / >
+		<span>Picked: {{picked}}</span>
+	</div>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el: '#example-4'
+		})
+	</script>
+	<hr>
+	<div id="example-5">
+		<h2>Select</h2>
+		<select v-model="selected">
+			<option selected>A</option>
+			<option>B</option>
+			<option>C</option>
+		</select>
+		<br / >
+		<span>selected: {{selected}}</span>
+	</div>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el: '#example-5'
+		})
+	</script>
+	<hr>
+	<div id="example-6">
+		<h2>多选Select</h2>
+		<select v-model="selected" multiple>
+			<option selected>A</option>
+			<option>B</option>
+			<option>C</option>
+		</select>
+		<br / >
+		<span>selected: {{ selected | json }}</span>
+	</div>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el: '#example-6'
+		})
+	</script>
+	<hr>
+	<div id="example-7">
+		<h2>动态选项，用v-for渲染</h2>
+		<select v-model="selected">
+			<option v-for="option in options" :value="option.value">
+				{{option.text}}
+			</option>
+		</select>
+		<span>Selected: {{selected}}</span>
+	</div>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el: '#example-7',
+			data: {
+				selected: 'A',
+				options: [
+					{text: 'One', value: 'A'},
+					{text: 'Two', value: 'B'},
+					{text: 'Three', value: 'C'}
+				]
+			}
+		})
+	</script>
+</body>
+</html>

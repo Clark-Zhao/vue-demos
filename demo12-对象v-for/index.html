@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>对象v-for</title>
+	<script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+	<ul id="demo">
+		<li v-for="item in object">
+			{{$key}}:{{item}}
+		</li>
+	</ul>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el: "#demo",
+			data: {
+				object: {
+					firstName: 'John',
+					lastName : 'Doe',
+					Age: 30
+				}
+			}
+		})
+	</script>
+	<hr>
+	<ul id="demo2">
+		<li v-for="(key,item) in object">
+			{{key}}:{{item}}
+		</li>
+	</ul>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el: "#demo2",
+			data: {
+				object: {
+					firstName: 'John',
+					lastName : 'Doe',
+					Age: 30
+				}
+			}
+		})
+	</script>	
+</body>
+</html>

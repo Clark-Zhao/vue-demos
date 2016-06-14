@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS过渡</title>
+	<script type="text/javascript" src="../vue.js"></script>
+	<style type="text/css">
+		.expand-transition {
+		  transition: all .3s ease;
+		  height: 30px;
+		  padding: 10px;
+		  background-color: #eee;
+		  overflow: hidden;
+		}
+
+		/* .expand-enter 定义进入的开始状态 */
+		/* .expand-leave 定义离开的结束状态 */
+		.expand-enter, .expand-leave {
+		  height: 0;
+		  padding: 0 10px;
+		  opacity: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="example">
+		<div v-if="show" transition="expand">hello</div>
+		<input type="checkbox" v-model="show" />
+		<span>v-if = "{{show}}"</span>
+	</div>
+	<script type="text/javascript">
+		new Vue({
+			el: '#example',
+			data: {
+				show: true
+			}
+		})
+	</script>
+</body>
+</html>
