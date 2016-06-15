@@ -4,10 +4,12 @@
 	<meta charset="UTF-8">
 	<title>CSS过渡</title>
 	<script type="text/javascript" src="../vue.js"></script>
+	<script type="text/javascript" src="../jquery-2.2.3.min.js"></script>
 	<style type="text/css">
 		.expand-transition {
 		  transition: all .3s ease;
 		  height: 30px;
+		  line-height: 30px;
 		  padding: 10px;
 		  background-color: #eee;
 		  overflow: hidden;
@@ -20,9 +22,41 @@
 		  padding: 0 10px;
 		  opacity: 0;
 		}
+		.bounce-transition {
+		  display: inline-block; /* 否则 scale 动画不起作用 */
+		}
+		.bounce-enter {
+		  animation: bounce-in .5s;
+		}
+		.bounce-leave {
+		  animation: bounce-out .5s;
+		}
+		@keyframes bounce-in {
+		  0% {
+		    transform: scale(0);
+		  }
+		  50% {
+		    transform: scale(1.5);
+		  }
+		  100% {
+		    transform: scale(1);
+		  }
+		}
+		@keyframes bounce-out {
+		  0% {
+		    transform: scale(1);
+		  }
+		  50% {
+		    transform: scale(1.5);
+		  }
+		  100% {
+		    transform: scale(0);
+		  }
+		}
 	</style>
 </head>
 <body>
+	<h2>CSS过渡</h2>
 	<div id="example">
 		<div v-if="show" transition="expand">hello</div>
 		<input type="checkbox" v-model="show" />
@@ -34,6 +68,56 @@
 			data: {
 				show: true
 			}
+		})
+	</script>
+	<hr>
+	<h2>CSS动画</h2>
+	<div id="example-2">
+		<div v-show="show" transition="bounce">Look at me!</div><br />
+		<input type="checkbox" v-model="show" />
+		<span>v-show = "{{show}}"</span>
+	</div>
+	<script type="text/javascript">
+		new Vue({
+			el: '#example-2',
+			data: {
+				show: true
+			}
+		})
+	</script>
+	<hr>
+	<h2>JavaScript动画</h2>
+	<div id="example-3">
+		<p v-if="show" transition="fade">test</p>
+		<input type="checkbox" v-model="show" />
+		<span>v-if = "{{show}}"</span>
+	</div>
+	<script type="text/javascript">
+		new Vue({
+			el: '#example-3',
+			data: {
+				show: true
+			}
+		})
+		Vue.transition('fade', {
+		  css: false,
+		  enter: function (el, done) {
+		    // 元素已被插入 DOM
+		    // 在动画结束后调用 done
+		    $(el)
+		      .css('opacity', 0)
+		      .animate({ opacity: 1 }, 1000, done)
+		  },
+		  enterCancelled: function (el) {
+		    $(el).stop()
+		  },
+		  leave: function (el, done) {
+		    // 与 enter 相同
+		    $(el).animate({ opacity: 0 }, 1000, done)
+		  },
+		  leaveCancelled: function (el) {
+		    $(el).stop()
+		  }
 		})
 	</script>
 </body>
