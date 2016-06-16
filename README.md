@@ -1,7 +1,7 @@
 # vue-demos
 a collection of simple demos of Vue.js
-## Official Tutorials
-[http://cn.vuejs.org/guide/](http://cn.vuejs.org/guide/)
+## Official Guide
+[http://vuejs.org/guide/](http://vuejs.org/guide/)
 ## How to use
 `$ git clone https://github.com/Clark-Zhao/vue-demos.git`
 ## Licence
